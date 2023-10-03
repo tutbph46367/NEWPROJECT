@@ -1,2 +1,20 @@
-Dũng đã thấy chưa
-qgdyghcf;ưqh hihehfuegfelhfbebbefeb
+ }//GEN-LAST:event_btnGhifileMouseClicked
+    public void docFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+        File file = new File("data.txt");
+        if (!file.exists()) {//Kiểm tra sự tồn tại của file
+            System.out.println("File này không tìm thấy");
+            return;
+        }
+        // Mo file
+        FileInputStream fis = new FileInputStream(file);
+        // Doc tung dong 
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        ArrayList<NhanVien> list = new ArrayList<>();
+        while (fis.available() > 0) {
+            list.add((NhanVien) ois.readObject());
+        }
+        ois.close();
+        fis.close();
+        loadData(list);
+
+    }
